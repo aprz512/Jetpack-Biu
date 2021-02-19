@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Jetpack-Biu</string>
+    <string name="time">时间：</string>
+    <string name="author">作者：</string>
+</resources>
