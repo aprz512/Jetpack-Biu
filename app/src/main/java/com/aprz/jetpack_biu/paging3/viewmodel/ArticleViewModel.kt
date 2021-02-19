@@ -14,13 +14,9 @@ import javax.inject.Inject
 class ArticleViewModel @Inject constructor(private val repository: ArticleRepository) :
     ViewModel() {
 
-    private var articleList: Flow<PagingData<Article>>? = null
-
     fun queryArticle(): Flow<PagingData<Article>> {
         // 缓存了当前的一页数据，便于立即恢复
-        val newList = repository.getArticleStream().cachedIn(viewModelScope)
-        articleList = newList
-        return newList
+        return repository.getArticleStream().cachedIn(viewModelScope)
     }
 
 }

@@ -3,13 +3,16 @@ package com.aprz.jetpack_biu.paging3.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.compose.ui.graphics.Color
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.aprz.jetpack_biu.R
+import com.aprz.jetpack_biu.common.getColorPrimary
 import com.aprz.jetpack_biu.paging3.model.Article
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import java.text.DateFormat
@@ -51,6 +54,8 @@ class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val author: TextView = itemView.findViewById(R.id.tv_author)
     private val time: TextView = itemView.findViewById(R.id.tv_time)
     private val link: TextView = itemView.findViewById(R.id.tv_link)
+    private val likeIcon: ImageView = itemView.findViewById(R.id.iv_like_icon)
+    private val like: TextView = itemView.findViewById(R.id.tv_like)
 
 
     fun bind(article: Article) {
@@ -59,6 +64,8 @@ class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         time.text = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.CHINA)
             .format(Date(article.shareDate))
         link.text = article.link
+        likeIcon.setColorFilter(getColorPrimary(itemView.context))
+        like.text = "${article.zan}"
     }
 
     companion object {
